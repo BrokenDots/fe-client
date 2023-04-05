@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const TicketRow = styled.tr<{ status: string }>`
+  border: 1px solid #ddd;
   &:nth-child(even) {
     background-color: #f2f2f2;
   }

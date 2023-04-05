@@ -7,7 +7,7 @@ export default function ListTicketsPage() {
     <CardWrapper title="Feature Request Tracker">
       <h3>search box goes here</h3>
       <TicketTable></TicketTable>
-      <Button text="Request new feature" />
+      <Button icon="add" text="Request new feature" />
     </CardWrapper>
   );
 }

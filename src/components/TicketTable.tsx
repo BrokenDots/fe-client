@@ -5,7 +5,8 @@ import useFetchTickets from "../hooks/useFetchTickets";
 const StyledTable = styled.table`
   border-collapse: collapse;
   width: 100%;
-  font-size: 0.9em;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
 `;
 
 const TableHead = styled.thead`
