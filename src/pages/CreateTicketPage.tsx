@@ -1,3 +1,9 @@
+import CardWrapper from "../components/CardWrapper";
+
 export default function CreateTicketsPage() {
-  return <h1>create page here</h1>;
+  return (
+    <CardWrapper title="New Feature Request">
+      <h3>form goes here</h3>
+    </CardWrapper>
+  );
 }
