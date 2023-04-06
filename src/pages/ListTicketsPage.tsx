@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 import CardWrapper from "../components/CardWrapper";
 import SearchBox from "../components/SearchBox";
@@ -26,6 +27,8 @@ const FilterContainer = styled.div`
 `;
 
 export default function ListTicketsPage() {
+  const navigate = useNavigate();
+
   // fetch all the tickets using custom hook
   const { data, isLoading, error } = useFetchTickets(
     "http://localhost:3000/tickets"
@@ -87,7 +90,11 @@ export default function ListTicketsPage() {
             />
           ))}
       </TicketTable>
-      <Button icon="add" text="Request new feature" />
+      <Button
+        icon="add"
+        text="Request new feature"
+        onClick={() => navigate("/create")}
+      />
     </CardWrapper>
   );
 }

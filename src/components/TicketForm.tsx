@@ -1,9 +1,4 @@
 import styled from "styled-components";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-import Button from "./Button";
-import useCreateTicket from "../hooks/useCreateTicket";
 
 const Form = styled.form`
   display: flex;
@@ -46,41 +41,27 @@ const Select = styled.select`
   padding: 0;
 `;
 
-export default function TicketForm() {
+interface ITicketFormProps {
+  formDataState: any;
+  setFormDataState: any;
+}
+
+export default function TicketForm({
+  formDataState,
+  setFormDataState,
+}: ITicketFormProps) {
   const crm = ["Robin Beck", "Ben Borin", "Dan Potter", "Johnny Zhou"];
 
-  const [formDataState, setFormDataState] = useState({
-    title: "",
-    client: "",
-    crm: "",
-  });
-
   function changeHandler(e: any) {
-    // e here is the input event object
     let name = e.target.name;
     let value = e.target.value;
     setFormDataState((prev: any) => {
       return {
-        ...prev, //use the spread operator ... to include everything in prev
-        [name]: value, //using ES6 computed property name.
+        ...prev,
+        [name]: value,
       };
     });
   }
-
-  //create ticket logic
-  const { isLoading, error, response, postTicket } = useCreateTicket();
-
-  const navigate = useNavigate();
-
-  //handle submission
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    postTicket(formDataState);
-    if (response) {
-      alert("Ticket Created");
-      navigate("/list");
-    }
-  };
 
   return (
     <Form>
@@ -119,10 +100,6 @@ export default function TicketForm() {
           ))}
         </Select>
       </FormRow>
-
-      <br />
-
-      <Button icon="add" text="Request Feature" onClick={handleSubmit} />
     </Form>
   );
 }
