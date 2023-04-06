@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import useCreateTicket from "../hooks/useCreateTicket";
 
+import newTicketSchema from "../schemas/newTicketSchema";
+
 export default function CreateTicketsPage() {
   //hold form state
   const [formDataState, setFormDataState] = useState({
@@ -15,17 +17,32 @@ export default function CreateTicketsPage() {
     crm: "",
   });
 
+  // validation
+  function validate(data: any) {
+    const { error } = newTicketSchema.validate(data, { abortEarly: false });
+    if (!error) return null;
+    return error;
+  }
+
   //use the custom hook for making post request
   const { isLoading, error, response, postTicket } = useCreateTicket();
 
-  const navigate = useNavigate();
+  let navigate = useNavigate();
+
+  let validationErrors;
 
   //handle submission
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    postTicket(formDataState);
-
-    navigate("/list");
+    validationErrors = validate(formDataState);
+    if (!validationErrors) {
+      postTicket(formDataState).then((res) => {
+        alert("Ticket created");
+        navigate("/list");
+      });
+    } else {
+      alert(validationErrors);
+    }
   };
 
   return (

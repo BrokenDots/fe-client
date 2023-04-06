@@ -20,12 +20,14 @@ const Label = styled.label`
   width: 50%;
   margin-right: 20px;
   font-weight: bold;
+  font-size: 1rem;
 `;
 
 const Input = styled.input`
   width: 50%;
   height: 30px;
   border: none;
+  font-size: 1rem;
   &:focus {
     outline: none;
   }
@@ -35,6 +37,7 @@ const Select = styled.select`
   width: 50%;
   height: 30px;
   border: none;
+  font-size: 1rem;
   &:focus {
     outline: none;
   }

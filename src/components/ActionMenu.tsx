@@ -127,7 +127,6 @@ export default function ActionMenu({ ticketId }: IActionMenuProps) {
             In development
           </MenuItem>
           <MenuItemHeading>Actions</MenuItemHeading>
-          <MenuItem>Edit</MenuItem>
           <MenuItem onClick={() => handleDelete(ticketId)}>Delete</MenuItem>
         </MenuItems>
       )}
