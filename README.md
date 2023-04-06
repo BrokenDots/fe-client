@@ -1,23 +1,32 @@
-# Getting Started with Create React App
+# Running this react app properly (Please read)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- This project depends on the test server created by Kineo team for the backend.
+- Kineo's server runs on localhost:3000.
+- This client runs on localhost:4000
+- To prevent the CORS error from showing up, please add the following to index.js on the server:
+  - install cors using npm install cors --save
+  - add the following lines of code to index.js on the server  
+     const cors = require("cors");
+    const corsOptions = {
+    origin: "\*",
+    credentials: true, //access-control-allow-credentials:true
+    optionSuccessStatus: 200,
+    };
+    app.use(cors(corsOptions)); // Use this after the variable declaration
 
-## Available Scripts
+## Tech debts
 
-In the project directory, you can run:
+There are a few things I would have liked to improve about this app but due to the lack of time and busy schedule, I am making a note of them here:
+
+- Error handling for all kinds of requests are not implemented
+- A few typescript types could be moved to its own file for reusability but not enough time to refactor.
+- Although not explicitly asked, the designs for the action menu hint at the existence of an edit page for the tickets. This would be nice to have at some point.
 
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
+Open [http://localhost:4000](http://localhost:4000) to view it in the browser.
 The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
@@ -27,20 +36,4 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Some additional work might be required to make client side routing to properly work on the files that this command creates. Might need to do make some changes to the server for it so I have left it alone**
