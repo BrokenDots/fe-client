@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ActionMenu from "./ActionMenu";
 
 const TicketRow = styled.tr<{ status: string }>`
   border: 1px solid #ddd;
@@ -56,7 +57,9 @@ export default function TicketRowWrapper({
         })}
       </TicketCell>
       <TicketCell>{statusEnum[status]}</TicketCell>
-      <TicketCell>...</TicketCell>
+      <TicketCell>
+        <ActionMenu ticketId={id} />
+      </TicketCell>
     </TicketRow>
   );
 }

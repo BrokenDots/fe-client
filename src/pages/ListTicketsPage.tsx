@@ -40,6 +40,8 @@ export default function ListTicketsPage() {
   //state for holding filtered data
   const [filteredData, setFilteredData] = useState<ticket[]>([]);
 
+  // const [forceRender, setForceRender] = useState(0);
+
   // filtering is done on the client side mainly through this hook
   // data is set  as a dependency so that the newFilteredArray can be populated as soon as the api returns data. ie the value changes from null to something.
   // it also runs when the search term changes
