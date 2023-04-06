@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import useDeleteTicket from "../hooks/useDeleteTicket";
+import useUpdateTicket from "../hooks/useUpdateTicket";
 import { useNavigate } from "react-router-dom";
 
 const ActionMenuWrapper = styled.div`
@@ -30,7 +31,6 @@ const MenuItems = styled.div`
 
 const MenuItemHeading = styled.div`
   padding: 0.5rem;
-  cursor: pointer;
   white-space: nowrap;
   color: #959595;
   border-bottom: 2px solid #959595;
@@ -41,7 +41,7 @@ const MenuItemHeading = styled.div`
 const MenuItem = styled.div`
   padding-inline: 1rem;
   padding-block: 0.5rem;
-  cursor: disabled;
+  cursor: pointer;
   white-space: nowrap;
   color: #0099ff;
   &:hover {
@@ -74,7 +74,18 @@ export default function ActionMenu({ ticketId }: IActionMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
 
-  const { isLoading, error, deleteTicket } = useDeleteTicket(ticketId);
+  const {
+    isLoading: isLoadingDelete,
+    error: deleteError,
+    deleteTicket,
+  } = useDeleteTicket(ticketId);
+
+  const {
+    isLoading: isLoadingUpdate,
+    error: updateError,
+    ticket,
+    updateTicket,
+  } = useUpdateTicket(ticketId);
 
   useOutsideClick(menuRef, () => setIsOpen(false));
 
@@ -91,15 +102,30 @@ export default function ActionMenu({ ticketId }: IActionMenuProps) {
     navigate("/", { replace: true }); // Refreshes the current page
   }
 
+  async function handleUpdate(ticketID: number, status: string) {
+    await updateTicket({
+      status: status,
+    });
+    alert("Ticket updated");
+    // Redirect to ticket list page or perform any other action here
+    navigate("/", { replace: true }); // Refreshes the current page
+  }
+
   return (
     <ActionMenuWrapper>
       <MenuIcon onClick={toggleMenu}>...</MenuIcon>
       {isOpen && (
         <MenuItems ref={menuRef}>
           <MenuItemHeading>Set status</MenuItemHeading>
-          <MenuItem>Backlog</MenuItem>
-          <MenuItem>Planned</MenuItem>
-          <MenuItem>In development</MenuItem>
+          <MenuItem onClick={() => handleUpdate(ticketId, "BACKLOG")}>
+            Backlog
+          </MenuItem>
+          <MenuItem onClick={() => handleUpdate(ticketId, "PLANNED")}>
+            Planned
+          </MenuItem>
+          <MenuItem onClick={() => handleUpdate(ticketId, "IN_DEVELOPMENT")}>
+            In development
+          </MenuItem>
           <MenuItemHeading>Actions</MenuItemHeading>
           <MenuItem>Edit</MenuItem>
           <MenuItem onClick={() => handleDelete(ticketId)}>Delete</MenuItem>
