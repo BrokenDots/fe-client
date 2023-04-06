@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import TicketRowWrapper from "./TicketRow";
-import useFetchTickets from "../hooks/useFetchTickets";
 
 const StyledTable = styled.table`
   border-collapse: collapse;

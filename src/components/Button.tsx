@@ -4,6 +4,7 @@ interface IButtonProps {
   disabled?: boolean;
   icon: "add" | "filter" | "export";
   text: string;
+  onClick?: any;
 }
 
 enum iconTypes {
@@ -27,9 +28,14 @@ const StyledButton = styled.button<{ disabled: boolean }>`
   gap: 0.5rem;
 `;
 
-export default function Button({ disabled = false, icon, text }: IButtonProps) {
+export default function Button({
+  disabled = false,
+  icon,
+  text,
+  onClick,
+}: IButtonProps) {
   return (
-    <StyledButton disabled={disabled}>
+    <StyledButton disabled={disabled} onClick={onClick}>
       <i className={iconTypes[icon]}></i>
       {text}
     </StyledButton>
