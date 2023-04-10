@@ -1,9 +1,26 @@
 import styled from "styled-components";
 
-const Search = styled.input`
-  width: 65%;
+const SearchWrapper = styled.div`
+  display: flex;
+  align-items: center;
   padding: 0.8rem;
   border: #9e9ea1 solid 2px;
+  width: 60%;
+  gap: 0.8rem;
+`;
+
+const IconContainer = styled.div`
+  border: none;
+  outline: none;
+  color: #9e9ea1;
+`;
+
+const Search = styled.input`
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: transparent;
 `;
 
 interface ISearchBoxProps {
@@ -18,12 +35,18 @@ export default function SearchBox({
   value,
 }: ISearchBoxProps) {
   return (
-    <Search
-      type="text"
-      placeholder={placeholder}
-      name="search"
-      value={value}
-      onChange={onChange}
-    ></Search>
+    <SearchWrapper>
+      <IconContainer>
+        <i className="fa fa-search"></i>
+      </IconContainer>
+      <Search
+        type="text"
+        autoComplete="off"
+        placeholder={placeholder}
+        name="search"
+        value={value}
+        onChange={onChange}
+      ></Search>
+    </SearchWrapper>
   );
 }
