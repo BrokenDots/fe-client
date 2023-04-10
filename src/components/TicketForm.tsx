@@ -95,9 +95,15 @@ export default function TicketForm({
       <FormRow>
         <Label>e3 Contact *</Label>
         <Select id="crm" name="crm" onChange={changeHandler}>
-          <option value="" disabled>
-            -- select crm --
-          </option>
+          {formDataState.crm === "" ? (
+            <option value="" disabled selected>
+              -- select crm --
+            </option>
+          ) : (
+            <option value="" disabled>
+              -- select crm --
+            </option>
+          )}
 
           {crm.map((item) =>
             formDataState.crm !== item ? (
