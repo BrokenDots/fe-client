@@ -75,6 +75,7 @@ export default function TicketForm({
           id="title"
           name="title"
           placeholder="Enter title"
+          value={formDataState.title}
           onChange={changeHandler}
         />
       </FormRow>
@@ -86,6 +87,7 @@ export default function TicketForm({
           id="client"
           name="client"
           placeholder="Enter client name"
+          value={formDataState.client}
           onChange={changeHandler}
         />
       </FormRow>
@@ -93,14 +95,21 @@ export default function TicketForm({
       <FormRow>
         <Label>e3 Contact *</Label>
         <Select id="crm" name="crm" onChange={changeHandler}>
-          <option value="" selected disabled>
+          <option value="" disabled>
             -- select crm --
           </option>
-          {crm.map((item) => (
-            <option key={item} value={item}>
-              {item}
-            </option>
-          ))}
+
+          {crm.map((item) =>
+            formDataState.crm !== item ? (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            ) : (
+              <option key={item} value={item} selected>
+                {item}
+              </option>
+            )
+          )}
         </Select>
       </FormRow>
     </Form>
