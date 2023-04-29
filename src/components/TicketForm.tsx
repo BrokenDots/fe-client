@@ -27,6 +27,9 @@ const Input = styled.input`
   width: 50%;
   height: 30px;
   border: none;
+  font-family: var(--body-font);
+  background-color: var(--card-color);
+  color: var(--text-color);
   font-size: 1rem;
   &:focus {
     outline: none;
@@ -37,6 +40,9 @@ const Select = styled.select`
   width: 50%;
   height: 30px;
   border: none;
+  background-color: var(--card-color);
+  font-family: var(--body-font);
+  color: var(--text-color);
   font-size: 1rem;
   &:focus {
     outline: none;

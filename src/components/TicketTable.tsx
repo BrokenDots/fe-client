@@ -8,8 +8,7 @@ const StyledTable = styled.table`
 `;
 
 const TableHead = styled.thead`
-  font-weight: bold;
-  border-bottom: solid black 2px;
+  font-weight: 700;
 `;
 
 const TableBody = styled.tbody`

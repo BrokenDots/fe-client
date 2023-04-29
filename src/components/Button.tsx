@@ -14,8 +14,9 @@ enum iconTypes {
 }
 
 const StyledButton = styled.button<{ disabled: boolean }>`
-  background-color: ${(props) => (props.disabled ? "#ffffff" : "#0099ff")};
-  border: ${(props) => (props.disabled ? "#9E9EA1 solid 2px" : "none")};
+  background-color: ${(props) =>
+    props.disabled ? "var(--background-color)" : "var(--accent-color)"};
+  border: none;
   color: ${(props) => (props.disabled ? "#9E9EA1" : "white")};
   padding: 0.8rem 1.5rem;
   text-align: center;
@@ -23,9 +24,12 @@ const StyledButton = styled.button<{ disabled: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: var(--body-font);
+  font-weight: 700;
   font-size: 1rem;
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
   gap: 0.5rem;
+  border-radius: 0.5rem;
 `;
 
 export default function Button({

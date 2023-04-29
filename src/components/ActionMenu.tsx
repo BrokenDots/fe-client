@@ -20,8 +20,8 @@ const MenuItems = styled.div`
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: #fff;
-  border: 1px solid #ccc;
+  background-color: var(--card-background-color);
+
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   padding: 0;
@@ -32,10 +32,11 @@ const MenuItems = styled.div`
 const MenuItemHeading = styled.div`
   padding: 0.5rem;
   white-space: nowrap;
-  color: #959595;
-  border-bottom: 2px solid #959595;
+  color: var(--accent-color);
+
   margin-bottom: 0.25rem;
   padding-inline: 1rem;
+  font-weight: 700;
 `;
 
 const MenuItem = styled.div`
@@ -43,9 +44,9 @@ const MenuItem = styled.div`
   padding-block: 0.5rem;
   cursor: pointer;
   white-space: nowrap;
-  color: #0099ff;
+  color: var(--text-color);
   &:hover {
-    background-color: #0099ff;
+    background-color: var(--accent-color);
     color: white;
   }
 `;

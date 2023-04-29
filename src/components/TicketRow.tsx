@@ -2,17 +2,16 @@ import styled from "styled-components";
 import ActionMenu from "./ActionMenu";
 
 const TicketRow = styled.tr<{ status: string }>`
-  border: 1px solid #ddd;
   &:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: var(--background-color);
   }
   border-left: 0.4em solid
     ${(props) =>
       props.status === "BACKLOG"
-        ? "#A5A5A5"
+        ? "var(--yellow)"
         : props.status === "IN_DEVELOPMENT"
-        ? "#34905C"
-        : "#498DC8"};
+        ? "var(--blue)"
+        : "var(--purple)"};
 `;
 
 const TicketCell = styled.td`

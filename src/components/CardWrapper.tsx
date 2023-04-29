@@ -1,24 +1,33 @@
 import styled from "styled-components";
 
 const Card = styled.div`
-  background-color: white;
-  color: black;
+  background-color: var(--card-background-color);
+  color: var(--text-color);
   max-width: 1300px;
   margin: 2rem auto auto auto;
   padding: 3rem 2rem;
+  border-radius: 0.5rem;
 `;
 
 const BarContainer = styled.div`
   width: 100%;
   height: 0.4rem;
-  background-color: #f2f2f2;
+  background-color: var(--background-color);
   border-radius: 0;
 `;
 
 const Bar = styled.div`
-  width: 20%;
+  width: 35%;
   height: 100%;
-  background-color: #0099ff;
+  background-color: var(--accent-color);
+`;
+
+const StyledTitle = styled.div`
+  font-family: var(--title-font);
+  font-weight: 900;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
 `;
 
 type ICardWrapperProps = React.PropsWithChildren<{
@@ -28,7 +37,7 @@ type ICardWrapperProps = React.PropsWithChildren<{
 export default function CardWrapper({ title, children }: ICardWrapperProps) {
   return (
     <Card>
-      <h1>{title}</h1>
+      <StyledTitle>{title}</StyledTitle>
       <BarContainer>
         <Bar />
       </BarContainer>

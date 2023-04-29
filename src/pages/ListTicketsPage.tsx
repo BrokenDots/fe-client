@@ -9,6 +9,7 @@ import TicketRowWrapper from "../components/TicketRow";
 import useFetchTickets from "../hooks/useFetchTickets";
 
 import React, { useState, useEffect } from "react";
+import useToggleTheme from "../hooks/useToggleTheme";
 
 type ticket = {
   id: number;
@@ -45,7 +46,7 @@ export default function ListTicketsPage() {
   // filtering is done on the client side mainly through this hook
   // data is set  as a dependency so that the newFilteredArray can be populated as soon as the api returns data. ie the value changes from null to something.
   // it also runs when the search term changes
-  // creates a new filtered array using the data returned from the api and the searchterm
+  // creates a new filtered array using the data returned from the api and the search term
   useEffect(() => {
     if (data != null) {
       if (searchTerm === "") {
@@ -65,6 +66,8 @@ export default function ListTicketsPage() {
     setSearchTerm(e.target.value);
   }
 
+  const toggleTheme = useToggleTheme();
+
   return (
     <CardWrapper title="Feature Request Tracker">
       <FilterContainer>
@@ -74,7 +77,8 @@ export default function ListTicketsPage() {
           onChange={changeHandler}
         />
         <Button icon="filter" text="Show filter options" disabled={true} />
-        <Button icon="export" text="Export CSV" disabled={true} />
+        {/* <Button icon="export" text="Export CSV" disabled={true} /> */}
+        <Button icon="export" text="Dark Mode" onClick={toggleTheme} />
       </FilterContainer>
 
       <TicketTable>

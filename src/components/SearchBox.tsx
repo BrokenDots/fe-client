@@ -3,7 +3,16 @@ import styled from "styled-components";
 const Search = styled.input`
   width: 65%;
   padding: 0.8rem;
-  border: #9e9ea1 solid 2px;
+  background-color: var(--background-color);
+  border: var(--background-color) solid 2px;
+  color: var(--text-color);
+  font-family: var(--body-font);
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  &:focus {
+    outline: none;
+  }
 `;
 
 interface ISearchBoxProps {
