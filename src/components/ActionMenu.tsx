@@ -103,6 +103,10 @@ export default function ActionMenu({ ticketId }: IActionMenuProps) {
     navigate("/", { replace: true }); // Refreshes the current page
   }
 
+  function handleEdit(ticketID: number) {
+    navigate(`/edit/${ticketId}`);
+  }
+
   async function handleUpdate(ticketID: number, status: string) {
     await updateTicket({
       status: status,
@@ -128,6 +132,7 @@ export default function ActionMenu({ ticketId }: IActionMenuProps) {
             In development
           </MenuItem>
           <MenuItemHeading>Actions</MenuItemHeading>
+          <MenuItem onClick={() => handleEdit(ticketId)}>Edit</MenuItem>
           <MenuItem onClick={() => handleDelete(ticketId)}>Delete</MenuItem>
         </MenuItems>
       )}

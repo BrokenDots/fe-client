@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import useCreateTicket from "../hooks/useCreateTicket";
 
-import newTicketSchema from "../schemas/newTicketSchema";
+import useValidation from "../hooks/useValidation";
 
 export default function CreateTicketsPage() {
   //hold form state
@@ -18,11 +18,7 @@ export default function CreateTicketsPage() {
   });
 
   // validation
-  function validate(data: any) {
-    const { error } = newTicketSchema.validate(data, { abortEarly: false });
-    if (!error) return null;
-    return error;
-  }
+  const { validate } = useValidation();
 
   //use the custom hook for making post request
   const { isLoading, error, response, postTicket } = useCreateTicket();

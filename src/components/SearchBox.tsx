@@ -1,16 +1,33 @@
 import styled from "styled-components";
 
-const Search = styled.input`
-  width: 65%;
+const SearchWrapper = styled.div`
+  display: flex;
+  align-items: center;
   padding: 0.8rem;
-  background-color: var(--background-color);
-  border: var(--background-color) solid 2px;
-  color: var(--text-color);
-  font-family: var(--body-font);
-  font-weight: 700;
-  font-size: 1rem;
   border-radius: 0.5rem;
-  &:focus {
+  background-color: var(--background-color);
+
+  width: 60%;
+  gap: 0.8rem;
+`;
+
+const IconContainer = styled.div`
+  border: none;
+  outline: none;
+  color: var(--yellow);
+`;
+
+const Search = styled.input`
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: var(--text-color);
+  font-family: var(--body-text);
+  font-weight: 700;
+  background: var(--background-color);
+  border-radius: 0.5rem;
+  &:focus: {
     outline: none;
   }
 `;
@@ -27,12 +44,18 @@ export default function SearchBox({
   value,
 }: ISearchBoxProps) {
   return (
-    <Search
-      type="text"
-      placeholder={placeholder}
-      name="search"
-      value={value}
-      onChange={onChange}
-    ></Search>
+    <SearchWrapper>
+      <IconContainer>
+        <i className="fa fa-search"></i>
+      </IconContainer>
+      <Search
+        type="text"
+        autoComplete="off"
+        placeholder={placeholder}
+        name="search"
+        value={value}
+        onChange={onChange}
+      ></Search>
+    </SearchWrapper>
   );
 }

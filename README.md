@@ -14,13 +14,9 @@
     };
     app.use(cors(corsOptions)); // Use this after the variable declaration
 
-## Tech debts
+## Extras
 
-There are a few things I would have liked to improve about this app but due to the lack of time and busy schedule, I am making a note of them here:
-
-- Error handling for all kinds of requests are not implemented
-- A few typescript types could be moved to its own file for reusability but not enough time to refactor.
-- Although not explicitly asked, the designs for the action menu hint at the existence of an edit page for the tickets. This would be nice to have at some point.
+Even though the assignment required me to build two pages list and create. I thought I would go ahead and add a third edit page that allows the user the edit more than just the status. Now you can edit the name, contact and crm of the ticket from this page. Hope you like it ❤️
 
 ### `npm start`
 
@@ -30,10 +26,6 @@ The page will reload if you make edits.\
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Not recommended to use this
 
 **Some additional work might be required to make client side routing to properly work on the files that this command creates. Might need to do make some changes to the server for it so I have left it alone**
